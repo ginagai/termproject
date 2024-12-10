@@ -53,3 +53,18 @@ footer {
         margin: 10px 0;
     }
 }
+img {
+    max-width: 150px; /* 设置图片最大宽度为 150px */
+    height: auto;    /* 高度自适应 */
+    border-radius: 50%; /* 如果想要圆形图片，可添加此属性 */
+}
+body {
+    background-image: url('assets/images/background.jpg'); /* 替换为你的背景图片路径 */
+    background-size: cover; /* 确保图片覆盖整个页面 */
+    background-position: center; /* 图片居中显示 */
+    background-repeat: no-repeat; /* 不重复显示背景图片 */
+    color: #090909; /* 设置文字为白色以便在深色背景上显示清晰 */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
