@@ -1,35 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skills</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <header>
-        <nav>
+import React from "react";
+import { Pie } from "react-chartjs-2";
+
+// 技能数据
+const skills = [
+    { name: "HTML5", level: "Advanced", percentage: 30 },
+    { name: "CSS3", level: "Advanced", percentage: 25 },
+    { name: "JavaScript", level: "Intermediate", percentage: 20 },
+    { name: "React", level: "Intermediate", percentage: 15 },
+    { name: "TypeScript", level: "Beginner", percentage: 10 },
+];
+
+const Skills = () => {
+    // 图表数据
+    const chartData = {
+        labels: skills.map((skill) => skill.name),
+        datasets: [
+            {
+                data: skills.map((skill) => skill.percentage),
+                backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF"],
+            },
+        ],
+    };
+
+    return (
+        <div style={{ padding: "20px" }}>
+            <h1>My Skills</h1>
+
+            {/* 动态技能列表 */}
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="resume.html">Resume</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                {skills.map((skill, index) => (
+                    <li key={index} style={{ marginBottom: "10px" }}>
+                        <strong>{skill.name}</strong>: {skill.level}
+                    </li>
+                ))}
             </ul>
-        </nav>
-    </header>
-    <main>
-        <h1>My Skills</h1>
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>React</li>
-            <li>Node.js</li>
-        </ul>
-    </main>
-    <footer>
-        <p>&copy; 2024 Your Name. All Rights Reserved.</p>
-    </footer>
-</body>
-</html>
+
+            {/* 图表部分 */}
+            <div style={{ maxWidth: "600px", margin: "20px auto" }}>
+                <Pie data={chartData} />
+            </div>
+        </div>
+    );
+};
+
+export default Skills;
